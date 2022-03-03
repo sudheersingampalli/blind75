@@ -35,3 +35,32 @@ class Solution:
             post = post * nums[j]
         
         return res
+
+
+'''
+Solution in Golang
+===================
+func productExceptSelf(nums []int) []int {
+    //declare
+    pre, post := 1, 1
+    l := len(nums)
+    res := make([]int,l)
+    
+    //initialise res with 1s
+    for i,_ := range(res){
+        res[i]=1
+    }
+    
+    for id, ele := range(nums){
+        res[id] = pre
+        pre = pre*ele
+    }
+    
+    for j:= l-1; j >-1; j--{
+        res[j] = res[j]*post
+        post = post * nums[j]
+    }
+    
+    return res
+}
+'''
